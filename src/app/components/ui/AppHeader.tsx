@@ -13,7 +13,7 @@ export default function AppHeader() {
         <div className="flex w-full h-full items-center justify-between">
           <button
             onClick={() => setMenuOpen(!isMenuOpen)}
-            className="focus:bg-black focus:bg-opacity-30 outline-none rounded-full w-[30px] h-[30px] flex items-center justify-center md:hidden"
+            className="focus:bg-black dark:focus:bg-gray-700 focus:bg-opacity-30 outline-none rounded-full w-[30px] h-[30px] flex items-center justify-center md:hidden"
           >
             <Menu />
           </button>
@@ -29,14 +29,14 @@ export default function AppHeader() {
               Alterar Tema
             </button>
           </nav>
-          <button className="focus:bg-black focus:bg-opacity-30 outline-none rounded-full w-[30px] h-[30px] flex items-center justify-center">
-            <Link href={"/new-note"}>
+          <button className="focus:bg-black dark:focus:bg-gray-700 focus:bg-opacity-30 outline-none rounded-full w-[30px] h-[30px] flex items-center justify-center">
+            <Link href={"/new-note"} className="outline-none">
               <CirclePlus />
             </Link>
           </button>
         </div>
         {isMenuOpen ? (
-          <div className="fixed inset-0 bg-white z-50 flex flex-col px-[40px] py-[25px]">
+          <div className="fixed inset-0 dark:bg-black bg-white z-50 flex flex-col px-[40px] py-[25px]">
             <div className="w-full flex justify-end">
               <button
                 onClick={() => setMenuOpen(false)}
@@ -52,7 +52,14 @@ export default function AppHeader() {
               <button onClick={() => setMenuOpen(false)}>
                 <Link href={"/sobre"}>Sobre</Link>
               </button>
-              <button onClick={() => setMenuOpen(false)}>Alterar Tema</button>
+              <button
+                onClick={() => {
+                  setMenuOpen(false);
+                  setTheme(resolvedTheme === "light" ? "dark" : "light");
+                }}
+              >
+                Alterar Tema
+              </button>
             </div>
           </div>
         ) : null}
