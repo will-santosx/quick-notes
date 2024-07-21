@@ -21,7 +21,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="light">
           <AppHeader />
-          <main className="px-[40px] pt-[20px] md:px-[100px] lg:px-[160px] xl:px-[220px] 2xl:px-[280px]">
+          <main className="px-[40px] py-[20px] md:px-[100px] lg:px-[160px] xl:px-[220px] 2xl:px-[280px]">
             {children}
           </main>
         </ThemeProvider>
