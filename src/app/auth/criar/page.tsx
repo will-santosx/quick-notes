@@ -12,22 +12,24 @@ export default function RegiterPage() {
   return (
     <div className="flex flex-col gap-[50px]">
       <div className="text-center">
-        <h1 className="text-[22px] font-bold">seja bem vindo &#40;a&#41;!</h1>
-        <span className="text-[14px]">
-          para prosseguir precisamos de algumas informações.
+        <h1 className="text-[22px] sm:text-[24px] lg:text-[28px] font-bold">
+          seja bem vindo &#40;a&#41;!
+        </h1>
+        <span className="text-[14px] sm:text-[16px] lg:text-[20px]">
+          para prosseguir precisamos de algumas inforamções.
         </span>
       </div>
       <div>
-        <form className="flex flex-col gap-[50px]">
-          <div className="flex flex-col gap-[25px]">
+        <form className="flex flex-col lg:gap-[70px] gap-[50px] w-full">
+          <div className="flex flex-col gap-[25px] lg:gap-[40px] items-center">
             <Input
               type="text"
-              name="register-name"
+              name="register-nome"
               value={InputRegisterName}
               placeholder="Nome"
               onChange={(e) => setInputRegisterName(e.target.value)}
-              required
               autoFocus
+              required
             />
             <Input
               type="email"
@@ -46,9 +48,9 @@ export default function RegiterPage() {
               required
             />
           </div>
-          <div className="flex flex-col text-center gap-3">
+          <div className="flex flex-col text-center gap-3 items-center">
             <Button type="submit" title="acessar" />
-            <span className="text-[13px]">
+            <span className="text-[13px] sm:text-[15px] lg:text-[19px]">
               já tem uma conta?{" "}
               <Link className="font-medium underline" href={"/auth/entrar"}>
                 clique aqui
