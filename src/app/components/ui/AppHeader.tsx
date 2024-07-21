@@ -1,5 +1,5 @@
 "use client";
-import { Menu, CirclePlus, X } from "lucide-react";
+import { Menu, CirclePlus, X, CircleUser } from "lucide-react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { useState } from "react";
@@ -9,11 +9,11 @@ export default function AppHeader() {
   const { resolvedTheme, setTheme } = useTheme();
   return (
     <>
-      <header className="w-full h-[80px] md:text-[18px] border-b-4 border-b-black border-opacity-30 px-[40px] py-[10px] md:px-[120px]">
+      <header className="w-full h-[80px] md:text-[18px] bg-gray-100 dark:bg-gray-700 border-b-4 border-b-black border-opacity-30 px-[40px] py-[10px] md:px-[120px]">
         <div className="flex w-full h-full items-center justify-between">
           <button
             onClick={() => setMenuOpen(!isMenuOpen)}
-            className="focus:bg-black dark:focus:bg-gray-700 focus:bg-opacity-30 outline-none rounded-full w-[30px] h-[30px] flex items-center justify-center md:hidden"
+            className="focus:bg-black focus:bg-opacity-30 outline-none rounded-full w-[30px] h-[30px] flex items-center justify-center md:hidden"
           >
             <Menu />
           </button>
@@ -29,14 +29,21 @@ export default function AppHeader() {
               Alterar Tema
             </button>
           </nav>
-          <button className="focus:bg-black dark:focus:bg-gray-700 focus:bg-opacity-30 outline-none rounded-full w-[30px] h-[30px] flex items-center justify-center">
-            <Link href={"/new-note"} className="outline-none">
-              <CirclePlus />
-            </Link>
-          </button>
+          <div className="flex gap-5">
+            <button className="focus:bg-black focus:bg-opacity-30 outline-none rounded-full w-[30px] h-[30px] flex items-center justify-center">
+              <Link href={"/anotacao/nova"} className="outline-none">
+                <CirclePlus />
+              </Link>
+            </button>
+            <button className="focus:bg-black focus:bg-opacity-30 outline-none rounded-full w-[30px] h-[30px] flex items-center justify-center">
+              <Link href={"/auth/entrar"} className="outline-none">
+                <CircleUser />
+              </Link>
+            </button>
+          </div>
         </div>
         {isMenuOpen ? (
-          <div className="fixed inset-0 dark:bg-black bg-white z-50 flex flex-col px-[40px] py-[25px]">
+          <div className="fixed inset-0 dark:bg-gray-700 bg-gray-100 z-50 flex flex-col px-[40px] py-[25px]">
             <div className="w-full flex justify-end">
               <button
                 onClick={() => setMenuOpen(false)}
