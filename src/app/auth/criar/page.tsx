@@ -2,12 +2,29 @@
 import Button from "@/app/components/ui/Button";
 import Input from "@/app/components/ui/Input";
 import Link from "next/link";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
+import { Register } from "../handleSubmit";
+import { useRouter } from "next/navigation";
 
 export default function RegiterPage() {
   const [InputRegisterName, setInputRegisterName] = useState("");
   const [InputRegisterEmail, setInputRegisterEmail] = useState("");
   const [InputRegisterPassword, setInputRegisterPassword] = useState("");
+  const Router = useRouter();
+
+  const handleFormSubmit = async (event: FormEvent) => {
+    event.preventDefault();
+    const name = InputRegisterName;
+    const email = InputRegisterEmail;
+    const password = InputRegisterPassword;
+
+    const res = await Register(name, email, password);
+    if (res) {
+      alert("Conta criada com sucesso! Agora, faça seu login.");
+      window.location.reload();
+      Router.push("/auth/entrar");
+    }
+  };
 
   return (
     <div className="flex flex-col gap-[50px]">
@@ -20,7 +37,10 @@ export default function RegiterPage() {
         </span>
       </div>
       <div>
-        <form className="flex flex-col lg:gap-[70px] gap-[50px] w-full">
+        <form
+          onSubmit={(e) => handleFormSubmit(e)}
+          className="flex flex-col lg:gap-[70px] gap-[50px] w-full"
+        >
           <div className="flex flex-col gap-[25px] lg:gap-[40px] items-center">
             <Input
               type="text"

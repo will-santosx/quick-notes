@@ -1,14 +1,14 @@
 import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
+import { NextRequest } from "next/server";
 
-export default function middleware(request: NextRequest) {
-  const token = request.cookies.get("jwt")?.value;
+export default async function middleware(request: NextRequest) {
+  const token = request.cookies.get("jwt");
   const signInURL = new URL("/auth/entrar", request.url);
   if (!token) {
-    return NextResponse.redirect(signInURL);
+    return NextResponse.rewrite(signInURL);
   }
 }
 
 export const config = {
-  matcher: ["/perfil/"],
+  matcher: ["/perfil/", "/anotacao/:path*"],
 };

@@ -11,12 +11,13 @@ export default function LoginPage() {
   const [InputLoginPassword, setInputLoginPassword] = useState("");
   const Router = useRouter();
 
-  const handleFormSubmit = (event: FormEvent) => {
+  const handleFormSubmit = async (event: FormEvent) => {
     event.preventDefault();
     const email = InputLoginEmail;
     const password = InputLoginPassword;
 
-    console.log(Login(email, password));
+    await Login(email, password);
+    window.location.reload();
     Router.push("/");
   };
 

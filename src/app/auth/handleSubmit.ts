@@ -15,3 +15,21 @@ export async function Login(email: string, password: string) {
     return false;
   }
 }
+
+export async function Register(name: string, email: string, password: string) {
+  try {
+    const req = await axiosFetch.post("api/auth/register", {
+      name: name,
+      email: email,
+      password: password,
+    });
+    const reponse = req.status;
+    if (reponse == 201) {
+      return true;
+    }
+    return true;
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
+}
