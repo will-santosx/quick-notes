@@ -36,7 +36,7 @@ export default function AppHeader() {
               </Link>
             </button>
             <button className="focus:bg-black focus:bg-opacity-30 outline-none rounded-full w-[30px] h-[30px] flex items-center justify-center">
-              <Link href={"/auth/entrar"} className="outline-none">
+              <Link href={"/perfil"} className="outline-none">
                 <CircleUser />
               </Link>
             </button>

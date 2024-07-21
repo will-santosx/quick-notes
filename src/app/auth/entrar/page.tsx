@@ -2,11 +2,23 @@
 import Button from "@/app/components/ui/Button";
 import Input from "@/app/components/ui/Input";
 import Link from "next/link";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
+import { Login } from "../handleSubmit";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
   const [InputLoginEmail, setInputLoginEmail] = useState("");
   const [InputLoginPassword, setInputLoginPassword] = useState("");
+  const Router = useRouter();
+
+  const handleFormSubmit = (event: FormEvent) => {
+    event.preventDefault();
+    const email = InputLoginEmail;
+    const password = InputLoginPassword;
+
+    console.log(Login(email, password));
+    Router.push("/");
+  };
 
   return (
     <div className="flex flex-col gap-[50px]">
@@ -19,7 +31,12 @@ export default function LoginPage() {
         </span>
       </div>
       <div>
-        <form className="flex flex-col lg:gap-[70px] gap-[50px] w-full">
+        <form
+          onSubmit={(e) => {
+            handleFormSubmit(e);
+          }}
+          className="flex flex-col lg:gap-[70px] gap-[50px] w-full"
+        >
           <div className="flex flex-col gap-[25px] lg:gap-[40px] items-center">
             <Input
               type="email"
