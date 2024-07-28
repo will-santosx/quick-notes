@@ -4,7 +4,7 @@ import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import LoadingPage from "@/app/components/ui/AppLoading";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Trash2 } from "lucide-react";
 import { format, parseISO } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import { useEditor, EditorContent } from "@tiptap/react";
@@ -16,6 +16,7 @@ import Bold from "@tiptap/extension-bold";
 import Italic from "@tiptap/extension-italic";
 import ListItem from "@tiptap/extension-list-item";
 import BulletList from "@tiptap/extension-bullet-list";
+import Button from "@/app/components/ui/Button";
 
 interface NoteData {
   id?: number;
@@ -57,6 +58,21 @@ export default function NotePage() {
 
   const { bg: bgColor } =
     colorMapping[noteData?.color as string] || colorMapping["default"];
+
+  async function removeNote() {
+    const id = params.id;
+    try {
+      setLoading(true);
+      await axiosFetch.delete(`/api/notes/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      router.push("/");
+    } catch (error) {
+      console.error("Failed to delete note", error);
+    } finally {
+      setLoading(false);
+    }
+  }
 
   async function getNoteData() {
     const id = params.id;
@@ -138,6 +154,14 @@ export default function NotePage() {
           <div className="flex flex-col gap-5">
             <h1>Anotação:</h1>
             <EditorContent editor={editor} />
+          </div>
+          <div>
+            <Button
+              onClick={() => removeNote()}
+              title="apagar"
+              icon={<Trash2 />}
+              type="button"
+            />
           </div>
         </div>
       )}
