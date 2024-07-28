@@ -44,7 +44,6 @@ export default function ProfilePage() {
       }
     } catch (error) {
       console.log(error);
-      router.push("/");
     } finally {
       setLoading(false);
     }

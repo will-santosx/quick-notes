@@ -8,7 +8,7 @@ export async function Login(email: string, password: string) {
       password: password,
     });
     const token = (await req.data.token) as string;
-    Cookie.set("jwt", token, { path: "/" });
+    Cookie.set("jwt", token, { path: "/", expires: 1 });
     return true;
   } catch (err) {
     console.log(err);

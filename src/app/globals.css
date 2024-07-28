@@ -5,23 +5,44 @@
 .tiptap h1 {
     font-size: x-large;
     font-weight: bold;
-}
-.tiptap h2 {
+  }
+  .tiptap h2 {
     font-size: larger;
     font-weight: bold;
-}
-.tiptap h3 {
+  }
+  .tiptap h3 {
     font-size: large;
     font-weight: 600;
-}
+  }
 
-div.tiptap * {
+  .tiptap ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  
+  .tiptap ul li {
+    width: fit-content !important;
+    list-style: none;
+    display: flex;
+    align-items: center;
+  }
+
+  .tiptap li:before {
+    content:"·";
+    font-size: 50px;
+    vertical-align:middle;
+    line-height:5px;
+}
+  
+  div.tiptap {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+  
+  div.tiptap * {
     width: fit-content;
-    min-width: 100%;
     max-width: 100%;
     text-align: start;
-}
-
-:root ul {
-    list-style: disc;
-}
+  }
+  

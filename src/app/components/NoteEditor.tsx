@@ -49,7 +49,7 @@ const NoteEditor = forwardRef<NoteEditorHandle>((props, ref) => {
 
   useImperativeHandle(ref, () => ({
     getContent: () => {
-      return editor ? editor.getJSON() : null;
+      return editor ? editor.getHTML() : null;
     },
   }));
 
@@ -79,24 +79,28 @@ const NoteEditor = forwardRef<NoteEditorHandle>((props, ref) => {
 
   return (
     <>
-      <div className="border-b-2 border-black border-opacity-30 flex justify-around">
-        <button type="button" onClick={toggleH1}>
-          <Heading1 className="w-[18px]" />
-        </button>
-        <button type="button" onClick={toggleH2}>
-          <Heading2 className="w-[18px]" />
-        </button>
-        <button type="button" onClick={toggleH3}>
-          <Heading3 className="w-[18px]" />
-        </button>
-        <button type="button" onClick={toggleBold}>
-          <BoldIcon className="w-[18px]" />
-        </button>
-        <button type="button" onClick={toggleItalic}>
-          <ItalicIcon className="w-[18px]" />
-        </button>
+      <div className="border-b-2 p-2 border-black border-opacity-30 flex justify-between">
+        <div className="flex items-center gap-3 lg:gap-6">
+          <button type="button" onClick={toggleH1}>
+            <Heading1 className="w-[18px] md:w-[22px]" />
+          </button>
+          <button type="button" onClick={toggleH2}>
+            <Heading2 className="w-[18px] md:w-[22px]" />
+          </button>
+          <button type="button" onClick={toggleH3}>
+            <Heading3 className="w-[18px] md:w-[22px]" />
+          </button>
+        </div>
+        <div className="flex items-center gap-3 lg:gap-6">
+          <button type="button" onClick={toggleBold}>
+            <BoldIcon className="w-[18px] md:w-[22px]" />
+          </button>
+          <button type="button" onClick={toggleItalic}>
+            <ItalicIcon className="w-[18px] md:w-[22px]" />
+          </button>
+        </div>
         <button type="button" onClick={toggleBulletList}>
-          <List className="w-[18px]" />
+          <List className="w-[18px] md:w-[22px]" />
         </button>
       </div>
       <EditorContent editor={editor} />
