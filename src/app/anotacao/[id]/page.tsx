@@ -131,7 +131,7 @@ export default function NotePage() {
     <div>
       {isLoading && <LoadingPage />}
       {!isLoading && noteData && (
-        <div className={`w-full flex flex-col gap-[40px]`}>
+        <div className={`w-full flex flex-col gap-[40px] items-center`}>
           <div
             className={`w-full flex ${bgColor} rounded-md text-gray-900 items-center justify-between p-3`}
           >
@@ -151,11 +151,11 @@ export default function NotePage() {
               </h2>
             </div>
           </div>
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-5 w-full">
             <h1>Anotação:</h1>
             <EditorContent editor={editor} />
           </div>
-          <div>
+          <div className="w-full flex justify-center">
             <Button
               onClick={() => removeNote()}
               title="apagar"

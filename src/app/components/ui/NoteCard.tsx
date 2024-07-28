@@ -50,13 +50,16 @@ export default function NoteCard({
 
   return (
     <button
-      className={`w-[130px] h-[130px] ${bgColor} ${border} border-2 rounded-md flex items-center flex-col justify-between p-2`}
+      className={`w-[130px] h-[130px]  md:w-[150px] md:h-[150px] lg:w-[170px] lg:h-[170px] ${bgColor} ${border} border-2 rounded-md flex items-center flex-col justify-between p-2`}
       onClick={onClick}
       {...rest}
     >
-      <BookText color={color} className={`w-[45px] h-[45px]`} />
+      <BookText
+        color={color}
+        className={`w-[45px] h-[45px] md:w-[65px] md:h-[65px]  lg:w-[75px] lg:h-[75px]`}
+      />
       <div className="max-w-[100px]">
-        <h2 className="truncate text-gray-900 font-semibold text-[15px]">
+        <h2 className="truncate text-gray-900 font-semibold text-[15px] lg:text-[20px]">
           {title}
         </h2>
         <span className="text-[15px] text-gray-600 font-medium">
