@@ -6,6 +6,7 @@ import Button from "@/app/components/ui/Button";
 import { axiosFetch } from "@/utils/axiosService";
 import LoadingPage from "@/app/components/ui/AppLoading";
 import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
 
 export default function NewNote() {
   const [InputNoteTitle, setInputTitle] = useState("");
@@ -19,6 +20,7 @@ export default function NewNote() {
     { id: "#7D3CFF", name: "roxo" },
   ];
   const editorRef = useRef<NoteEditorHandle>(null);
+  const router = useRouter();
 
   const handleSave = async (e: FormEvent) => {
     e.preventDefault();
@@ -47,6 +49,7 @@ export default function NewNote() {
         return false;
       } finally {
         setLoading(false);
+        router.push("/");
       }
     }
   };

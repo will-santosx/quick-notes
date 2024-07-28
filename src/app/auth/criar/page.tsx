@@ -33,7 +33,7 @@ export default function RegiterPage() {
           seja bem vindo &#40;a&#41;!
         </h1>
         <span className="text-[14px] sm:text-[16px] lg:text-[20px]">
-          para prosseguir precisamos de algumas inforamções.
+          para prosseguir precisamos de algumas informações.
         </span>
       </div>
       <div>
